@@ -5,8 +5,14 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  private fibonacci (n){
+    return n < 1 ? 0 : n <= 2 ? 1 : this.fibonacci(n - 1) + this.fibonacci(n - 2);
+  };
+
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getFibonacci(): string {
+    const result = this.fibonacci(40);
+    console.log(process.pid);
+    return result;
   }
 }
